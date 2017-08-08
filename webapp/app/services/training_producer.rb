@@ -1,7 +1,10 @@
 class TrainingProducer
   def self.publish(message)
-    channel.fanout("training")
-           .publish(message.to_json)
+    queue.publish(message.to_json)
+  end
+
+  def self.queue
+    @queue ||= channel.queue("training")
   end
 
   def self.channel
