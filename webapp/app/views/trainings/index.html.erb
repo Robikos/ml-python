@@ -1,1 +1,7 @@
-trainings
+Currently trained instances: <%= Train.count %>
+
+<% Train.all.each_with_index do |train, index| %>
+  <%= index %>: <%= train.data %>
+<% end %>
+
+<%= link_to "Add", new_training_path %>
