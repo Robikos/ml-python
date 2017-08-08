@@ -1,6 +1,6 @@
 class TrainingProducer
   def self.publish(message)
-    queue.publish(message.to_json)
+    queue.publish(message)
   end
 
   def self.queue

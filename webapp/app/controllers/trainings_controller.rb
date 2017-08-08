@@ -9,11 +9,7 @@ class TrainingsController < ApplicationController
   def create
     @training = Training.new(training_params)
     if @training.save
-      TrainingProducer.publish(
-        data: @training.data,
-        result: @training.result
-      )
-
+      TrainingProducer.publish(trainings_hash)
       redirect_to trainings_path, notice: "Train added successfully"
     else
       redirect_to trainings_path, alert: "Error while adding train"
@@ -24,5 +20,9 @@ class TrainingsController < ApplicationController
 
   def training_params
     params.require(:training).permit(:data, :result)
+  end
+
+  def trainings_hash
+    Training.select(:data, :result).to_json
   end
 end
