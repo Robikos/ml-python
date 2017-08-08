@@ -1,1 +1,11 @@
-evaluations
+Type input data: <br>
+
+<%= form_tag(controller: :evaluations, action: :create, method: :post) do %>
+  <%= label_tag :data %>
+  <%= text_field_tag :data %>
+  <%= submit_tag "Evaluate" %>
+<% end %>
+
+Result: <br>
+
+<span class="js-result"></span>
