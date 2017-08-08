@@ -1,5 +1,9 @@
 <%= form_for @training do |form| %>
   <%= form.label :data %>
   <%= form.text_field :data %>
+  <br>
+  <%= form.label :result %>
+  <%= form.text_field :result %>
+  <br>
   <%= form.submit "Add" %>
 <% end %>
