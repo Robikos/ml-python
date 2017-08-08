@@ -9,6 +9,11 @@ class TrainingsController < ApplicationController
   def create
     @training = Training.new(training_params)
     if @training.save
+      TrainingProducer.publish(
+        data: @training.data,
+        result: @training.result
+      )
+
       redirect_to trainings_path, notice: "Train added successfully"
     else
       redirect_to trainings_path, alert: "Error while adding train"
