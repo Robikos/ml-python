@@ -1,7 +1,10 @@
 import pika
+from neural_net import NeuralNet
 
 def callback(channel, method, properties, body):
   print("[x] Received %r" % body)
+  neural_net = NeuralNet(body)
+  neurla_net.train()
 
 connection = pika.BlockingConnection(
   pika.ConnectionParameters("localhost")
