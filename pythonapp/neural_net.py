@@ -22,7 +22,8 @@ class NeuralNet:
   def model(self):
     data_dimension = len(self.training_data[0])
     input_layer = tf.placeholder(tf.int32, shape=(data_dimension))
-    dense1_layer = tf.layers.dense(inputs=input_layer, units=data_dimension, activation=tf.nn.relu)
+    input_layer_y = tf.reshape(input_layer, [data_dimension, 1])
+    dense1_layer = tf.layers.dense(inputs=input_layer_y, units=data_dimension, activation=tf.nn.relu)
     dense2_layer = tf.layers.dense(inputs=dense1_layer, units=data_dimension / 2, activation=tf.nn.relu)
     output_layer = tf.layers.dense(inputs=dense2_layer, units=1)
     output_layer
