@@ -26,7 +26,7 @@ class NeuralNet:
     dense1_layer = tf.layers.dense(inputs=input_layer_y, units=data_dimension, activation=tf.nn.relu)
     dense2_layer = tf.layers.dense(inputs=dense1_layer, units=data_dimension / 2, activation=tf.nn.relu)
     output_layer = tf.layers.dense(inputs=dense2_layer, units=1)
-    output_layer
+    return output_layer
 
   def train(self):
     cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=self.model(), labels=self.training_labels)
