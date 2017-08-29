@@ -20,10 +20,10 @@ class NeuralNet:
     return [training_data, training_labels]
 
   def model(self):
-    data_dimention = len(self.training_data[0])
-    input_layer = tf.placeholder(tf.int32, shape=(data_dimention))
-    dense1_layer = tf.layers.dense(inputs=input_layer, units=data_dimention, activation=tf.nn.relu)
-    dense2_layer = tf.layers.dense(inputs=dense1_layer, units=data_dimention / 2, activation=tf.nn.relu)
+    data_dimension = len(self.training_data[0])
+    input_layer = tf.placeholder(tf.int32, shape=(data_dimension))
+    dense1_layer = tf.layers.dense(inputs=input_layer, units=data_dimension, activation=tf.nn.relu)
+    dense2_layer = tf.layers.dense(inputs=dense1_layer, units=data_dimension / 2, activation=tf.nn.relu)
     output_layer = tf.layers.dense(inputs=dense2_layer, units=1)
     output_layer
 
