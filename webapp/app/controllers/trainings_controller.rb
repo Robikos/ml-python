@@ -10,9 +10,9 @@ class TrainingsController < ApplicationController
     @training = Training.new(training_params)
     if @training.save
       TrainingProducer.publish(trainings_hash)
-      redirect_to trainings_path, notice: "Train added successfully"
+      redirect_to trainings_path, notice: "Training added successfully"
     else
-      redirect_to trainings_path, alert: "Error while adding train"
+      redirect_to trainings_path, alert: "Error while adding traininig"
     end
   end
 
