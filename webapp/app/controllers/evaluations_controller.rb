@@ -4,6 +4,8 @@ class EvaluationsController < ApplicationController
 
   def create
     data = evaluation_params[:data]
+    MessagesProducer.publish({ request: [data] }.to_json)
+
     redirect_to evaluations_path, notice: "Thanks! You've just evaluated #{data}"
   end
 

@@ -1,10 +1,10 @@
-class TrainingProducer
+class MessagesProducer
   def self.publish(message)
     queue.publish(message)
   end
 
   def self.queue
-    @queue ||= channel.queue("training")
+    @queue ||= channel.queue("neural_net")
   end
 
   def self.channel
