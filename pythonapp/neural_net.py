@@ -2,10 +2,13 @@ import tensorflow as tf
 import json
 
 class NeuralNet:
-  def __init__(self, training_data):
+  def __init__(self, training_data = None):
     self.update_training_set(training_data)
 
-  def update_training_set(self, training_data):
+  def update_training_set(self, training_data = None):
+    if training_data == None:
+      return
+
     self.training_data, self.training_labels = self.__deserialize_training_data(training_data)
     self.batch_size = len(self.training_data)
     self.num_features = len(self.training_data[0])
@@ -49,3 +52,15 @@ class NeuralNet:
 
     print("Finish!")
     print c
+
+  def predict(self, input_data):
+    input_data = [[ float(j) for j in i.split(",") ] for i in input_data]
+    result = self.model.eval({ self.input_layer: input_data })
+    print("Prediction result %r" % result)
+    if result.size < 2:
+      return "none"
+
+    if result[0][0] > result[0][1]:
+      return "0"
+
+    return "1"
